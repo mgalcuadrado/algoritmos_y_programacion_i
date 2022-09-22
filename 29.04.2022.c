@@ -58,7 +58,7 @@ int main (void){
 #define MENSAJE_NO_ES_TRIANGULAR_SUPERIOR "La matriz no es triangular superior"
 
 bool es_triangular_superior (size_t n, float matriz[n][n]){
-    for (size_t i = 1; i < n; i++){ //no tiene sentido arrancarlo en cero porque no va a haber elementos más chicos
+    for (size_t i = 1; i < n - 1; i++){ //no tiene sentido arrancarlo en cero porque no va a haber elementos más chicos, y no tiene sentido leer la última fila porque no va a tener elementos superiores
         for (size_t j = 0; j < i; j++){
             if (matriz[i][j] != 0)
                 return false;
@@ -67,6 +67,7 @@ bool es_triangular_superior (size_t n, float matriz[n][n]){
     return true;
 }
 
+//Nota: en 11.04.2019.c está resuelto para una matriz triangular inferior. 
 int main(void){
     float a[N][N] = {
         {1, 2, 3},
