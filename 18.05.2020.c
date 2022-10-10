@@ -9,7 +9,7 @@ Aclaración: Sólo está permitido utilizar la función atoi() de <stdlib.h>, cu
 que se necesite se debe implementar.
 A fines de simplicidad una cadena como "25hola,8mundo\n" puede interpretarse como {25, 8}.
 
-
+Acá está la resolución original, y después propongo una más linda usando punteros
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,6 +42,20 @@ bool extraer_par (int par[2], const char s[]){
     }
     return true; 
 }
+
+
+acá dejo una función que extraería cada parte individual y devolvería cada sector por el nombre y la posición desde la que empezaría a leer en el siguiente llamado por interfaz
+size_t _extraer_parte (size_t *posicion, char aux[]){
+    size_t i;
+    char extra[MAX_STR];
+    for (i = 0; aux[*posicion] != SEPARADOR && aux[*posicion] != '\n'; i++, *posicion = *posicion + 1)
+        extra[i] = aux[*posicion];
+    extra[i] = '\0';
+    *posicion = *posicion + 1;
+    return atoi(extra);
+}
+
+
 
 size_t leer_pares (int pares[][2], size_t max){
     size_t pares_leidos = 0;
