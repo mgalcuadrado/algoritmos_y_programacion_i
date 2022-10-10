@@ -44,7 +44,9 @@ bool extraer_par (int par[2], const char s[]){
 }
 
 
-acá dejo una función que extraería cada parte individual y devolvería cada sector por el nombre y la posición desde la que empezaría a leer en el siguiente llamado por interfaz
+//acá dejo una función que extraería cada parte individual
+//Devolvería por el nombrecada sector ya convertido a número y 
+//devolvería por interfaz la posición desde la que empezaría a leer en el siguiente llamado hipotético
 size_t _extraer_parte (size_t *posicion, char auxiliar[]){
     size_t i;
     char extra[MAX];
@@ -55,7 +57,7 @@ size_t _extraer_parte (size_t *posicion, char auxiliar[]){
     return atoi(extra);
 }
 
-
+//2. Leer pares 
 
 size_t leer_pares (int pares[][2], size_t max){
     size_t pares_leidos = 0;
