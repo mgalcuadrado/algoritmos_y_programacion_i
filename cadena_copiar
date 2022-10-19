@@ -1,0 +1,31 @@
+/* EJERCICIO 1 DE LA GUÍA DE MEMORIA DINÁMICA:
+
+Implementá una función que reciba una cadena y retorne una copia de la misma, utilizando memoria dinámica, por el nombre. 
+Si por algún motivo no se puede, retornar NULL.
+Ahora implementá una función equivalente, pero en vez de retornar la copia por el nombre, que lo haga por la interfaz, 
+mientras que por el nombre retorna un estado, bool, indicando el resultado de la operación.
+
+*/
+
+char * cadena_copiar (const char * string){
+    size_t i;
+    for (i = 0; string[i] != '\0'; i++);
+    char * copia = malloc (i * sizeof(char));
+    if (copia == NULL){
+        return NULL;
+    }
+    for (size_t j = 0; j < i; j++)
+        copia[j] = string [j];
+    return copia;
+ }
+
+
+  bool cadena_se_copio (const char * string, char ** copia){
+    char * cadena = malloc ((strlen (string) + 1) * sizeof(char));
+    if (cadena == NULL){
+        return false;
+    }
+    strcpy (cadena, string);
+    *copia = cadena;
+    return true;
+ }
