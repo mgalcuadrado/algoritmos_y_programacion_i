@@ -26,7 +26,8 @@ bool es_control (char c){
     return (c >> SHIFT_CONTROL == MASK_CONTROL);
 }
 bool es_numero(char c){
-    return ((c & MASK_REP_NUMERO) == MASK_REP_NUMERO);
+    if((c & MASK_REP_NUMERO) != MASK_REP_NUMERO) return false;
+    return ( 0 > (c & MASK_VALOR_NUMERO) && (c & MASK_REP_NUMERO) > 27);
 }
 
 int a_numero (char c){
