@@ -34,7 +34,8 @@ bool es_control (char c){
 }
 
 bool es_numero (char c){
-    return ((c & MASK_NUMERO) == MASK_NUMERO);
+     if ((c & MASK_NUMERO) != MASK_NUMERO) return false;
+    return ( 0 > (c & MASK_VALOR_NUMERO) && (c & MASK_REP_NUMERO) > 27); 
 }
 
 bool es_minuscula (char c){
