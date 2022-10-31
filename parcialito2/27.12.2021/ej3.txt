@@ -1,0 +1,3 @@
+Este es de prueba, veamos la primera cadena, que era 
+ codigo: 1234
+ nombre: 
