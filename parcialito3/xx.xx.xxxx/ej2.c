@@ -22,8 +22,8 @@ bool leer_persona(FILE *f, persona_t *p){
     if (fread (&len, sizeof(size_t), 1, f) != 1) return false;
     if (len + 1 > MAX) return false;
     if (fread(p->nombre, sizeof(char), len, f) != len) return false;
-    if (fread(p->dni, sizeof(unsigned int), 1, f) != 1) return false;
-    if (fread(p->altura, sizeof(float), 1, f) != 1) return false;
+    if (fread(&p->dni, sizeof(unsigned int), 1, f) != 1) return false;
+    if (fread(&p->altura, sizeof(float), 1, f) != 1) return false;
     return true;
 }
 
