@@ -26,7 +26,7 @@ bool escribir_coordenadas(const char *r, coord_t *cs, size_t n){
         return false;
     }
     for (size_t i = 0; i < n; i++){
-            if (fwrite(&cs[i][j], sizeof(float), 2, f) != 2){
+            if (fwrite(&cs[i], sizeof(float), 2, f) != 2){
                 fclose(f);
                 return false;
             }
