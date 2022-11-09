@@ -34,7 +34,7 @@ double vector_norma(const vector_t *v){
 }
 
 bool vector_sumar(vector_t *a, const vector_t *b){
-    if (b->n > a->n) return false;
+    if (b->n != a->n) return false;
     for (size_t i = 0; i < b->n; i++){
         a->vect[i] += b->vect[i];
     }
