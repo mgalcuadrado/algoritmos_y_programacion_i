@@ -13,11 +13,15 @@ binario y devuelva por el nombre el arreglo de doubles contenido en él y en n l
 bool escribir_doubles(const char *r, const double a[], size_t n){
     FILE * f = fopen (r, "wb");
     if (f == NULL) return false;
-    if (fwrite(&n, sizeof(size_t), 1, f) != 1) return false;
-    for (size_t i = 0; i < n; i++){
-        if (fwrite(&a[i], sizeof(double), 1, f) != 1) return false;
+    if (fwrite(&n, sizeof(size_t), 1, f) != 1){
+        fclose(f);
+        return false;
     }
-    (fclose(f)) ? return false : return true;
+    if (fwrite(&a[i], sizeof(double), n, f) != 1){
+        fclose(f);
+        return false;
+    }
+    return (fclose(f) != EOF);
 }
 
 double * leer_doubles(const char *r, size_t *n){
@@ -32,13 +36,13 @@ double * leer_doubles(const char *r, size_t *n){
         fclose(f);
         return NULL;
     }
-    for (size_t i = 0; i < *n; i++){
-        if (fread(&arr[i], sizeof(double), 1, f) != 1){
-            free(arr);
-            fclose(f);
-            return NULL;
-        }
+    if (fread(&arr[i], sizeof(double), (*n), f) != 1){
+           free(arr);
+           fclose(f);
+           return NULL;
     }
-    (fclose(f)) ? return NULL : return arr;
+    if (fclose(f))
+        return NULL;
+    return arr;
 }
 
