@@ -25,16 +25,12 @@ bool escribir_coordenadas(const char *r, coord_t *cs, size_t n){
         fclose(f);
         return false;
     }
-    for (size_t i = 0; i < n; i++){
-            if (fwrite(&cs[i], sizeof(float), 2, f) != 2){
-                fclose(f);
-                return false;
-            }
+    for (size_t i = 0; i < n; i++)
+        if (fwrite(&cs[i], sizeof(float), 2, f) != 2){ //puedo guardar todo el arreglo directamente??
+            fclose(f);
+            return false;
         }
-    }
-    if (fclose(f))
-        return false
-    return true;
+    return (fclose(f) != EOF) ? true : false;
 }
 
 coord_t *leer_coordenadas(const char *r, size_t *n){
