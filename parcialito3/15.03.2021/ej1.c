@@ -32,7 +32,7 @@ size_t sinonimos_cantidad_sinonimos(const sinonimos_t *s){
 }
 
 bool sinonimos_es_sinonimo(const sinonimos_t *sinonimos, const sinonimos_t *palabra){
-    for (size_t i = 0; i < sinonimos->nsin; i++){
+    for (size_t i = 1; i < sinonimos->nsin; i++){
         if (! strcmp (sinonimos->palabra[i], palabra->palabra[0])) return true;
     }
     return false;
