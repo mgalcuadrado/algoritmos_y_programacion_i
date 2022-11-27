@@ -23,24 +23,27 @@ void unir_listas_ordenadas(lista_t * d, lista_t * o){
         o->prim = NULL;
         return;
     }
-    struct nodo * dact = d->prim, oact = o->prim;
+    struct nodo * dact = d->prim, dant = d->prim, oact = o->prim;
     while (dact->sig != NULL && oact->sig != NULL){
         if (dact->dato < oact->dato){
+            dant = dact;
             dact = dact->sig;
         }
         else if (dact->dato > oact->dato){
             struct nodo * oant = oact;
             oact = oact ->sig;
-            oant->sig = dact->sig;
-            dact->sig = oant;
-            dact = oant->sig;
+            oant->sig = dact;
+            dant->sig = oant;
+            dant = dant->sig;
         }
         else{
+            dant = dact;
             dact = dact->sig;
             oact = oact->sig;
         }
     }
-    if (dact->sig == NULL){
-        dact->sig = oact;
+    if (dact == NULL){
+        dact = oact;
+        return;
     }
 }
