@@ -11,9 +11,9 @@ en cambio si f fuera el producto se debería devolver 48.
 
 int arreglo_reducir(const int arreglo[], size_t n, int (*f)(int a, int b)){
     if (n == 1) return arreglo[0];
-    int i, r = arreglo[0];
-    for (i = 1; i < n; i += 1){
-        int p = f(r, arreglo[i]);
+    int r = arreglo[0];
+    for (size_t i = 1; i < n; i += 1){
+        r = f(r, arreglo[i]);
     }
     return r;
 }
