@@ -30,6 +30,7 @@ void unir_listas_ordenadas(lista_t * d, lista_t * o){
             dact = dact->sig;
         }
         else if (dact->dato > oact->dato){
+            //esto se explica bien en esta mini presentación que hice: https://docs.google.com/presentation/d/1LuU4lCz9aFyEj9zdVwtjcLiSE7lAygo8SPEIS8-K1-k/edit?usp=sharing
             struct nodo * oant = oact;
             oact = oact ->sig;
             oant->sig = dact;
